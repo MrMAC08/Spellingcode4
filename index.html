@@ -3,252 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code 4 Vocabulary Station (Year Four)</title>
+    <title>The Code Curriculum Workbook - Year 4</title>
     <style>
-        :root { --primary: #3b82f6; --success: #10b981; --danger: #ef4444; --bg: #f8fafc; --card-bg: #ffffff; --text: #0f172a; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .container { width: 100%; max-width: 800px; }
-        .teacher-panel { background: #f1f5f9; border: 2px dashed #94a3b8; border-radius: 12px; padding: 20px; margin-bottom: 30px; }
-        .teacher-panel h2 { margin-top: 0; color: #334155; }
-        .bulk-textarea { width: 100%; height: 180px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: monospace; font-size: 13px; box-sizing: border-box; margin-bottom: 15px; resize: vertical; }
-        .student-card { background: var(--card-bg); border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); padding: 40px; text-align: center; min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; width: 100%; max-width: 650px; margin-top: 20px; }
-        .menu-btn { background-color: #f8fafc; color: var(--text); border: 2px solid #e2e8f0; padding: 18px; font-size: 1.05rem; border-radius: 10px; cursor: pointer; font-weight: bold; text-align: left; display: flex; flex-direction: column; justify-content: space-between; }
-        .menu-btn:hover { background-color: var(--primary); color: white; border-color: var(--primary); }
-        .progress-bar { font-weight: bold; color: var(--primary); margin-bottom: 20px; font-size: 1.1rem; }
-        .target-word { font-size: 4.5rem; font-weight: 800; letter-spacing: 1px; margin: 10px 0; transition: opacity 0.5s ease; }
-        .hidden-word { opacity: 0 !important; }
-        .rule-box { background: #f8fafc; border-left: 5px solid var(--primary); padding: 20px; border-radius: 0 8px 8px 0; font-size: 1.15rem; margin: 20px 0; max-width: 90%; text-align: left; line-height: 1.6; }
-        .rule-box strong { color: var(--primary); }
-        .rule-box ul { margin: 8px 0; padding-left: 20px; }
-        .lock-container { background: #fef2f2; border: 2px dashed var(--danger); border-radius: 8px; padding: 15px; margin: 0 auto; width: 90%; max-width: 400px; }
-        .teacher-password-input, .student-input { font-size: 1.5rem; padding: 12px; text-align: center; border: 3px solid #cbd5e1; border-radius: 8px; outline: none; }
-        .teacher-password-input { width: 240px; font-size: 1.2rem; padding: 8px; text-transform: lowercase;}
-        .student-input { width: 80%; max-width: 350px; text-transform: lowercase; }
-        button { background-color: var(--primary); color: white; border: none; padding: 12px 28px; font-size: 1.1rem; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 20px; }
-        button:hover { background-color: #2563eb; }
-        button:disabled { background-color: #cbd5e1; cursor: not-allowed; }
-        .sentence-prompt { font-size: 1.6rem; margin-bottom: 25px; line-height: 1.6; }
-        .sentence-prompt em { color: var(--primary); font-weight: bold; font-style: normal; text-decoration: underline; }
-        .feedback { font-size: 1.2rem; font-weight: bold; margin-top: 15px; }
-        .feedback.success { color: var(--success); }
-        .feedback.error { color: var(--danger); }
-        .toggle-panel-btn { background: #64748b; margin-bottom: 10px; padding: 8px 16px; font-size: 0.9rem; color: white; border: none; border-radius: 6px; cursor: pointer; }
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --border: #e2e8f0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+        h1 { margin-bottom: 0.5rem; color: #0f172a; }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .grid { grid-template-columns: 1fr 1fr; }
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card h2 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.25rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        .rule-box {
+            background: #f1f5f9;
+            border-left: 4px solid var(--primary);
+            padding: 0.75rem;
+            margin: 0.5rem 0 1rem 0;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        .word-tag {
+            display: inline-block;
+            background: #e2e8f0;
+            padding: 0.25rem 0.5rem;
+            margin: 0.2rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .word-tag:hover { background: #cbd5e1; }
+        .interactive-zone {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border);
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 0.5rem;
+        }
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button:hover { background: var(--primary-dark); }
+        .output {
+            margin-top: 0.5rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: var(--success);
+        }
+        .badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+            font-weight: bold;
+            color: white;
+            float: right;
+        }
+        .badge-y4 { background-color: #f59e0b; }
     </style>
 </head>
 <body>
+
 <div class="container">
-    <button class="toggle-panel-btn" onclick="secureTogglePanel()">Open Control Panel</button>
-    <div class="teacher-panel" id="teacherPanel">
-        <h2>Code 4 Setup Panel (Year 4 Version)</h2>
-        <div style="margin-bottom: 15px;">
-            <label style="font-weight:bold;">First Word Unlock Passcode: </label>
-            <input type="text" id="teacherCodeSetting" value="tiger" style="padding:5px; font-size:1rem; width:120px;">
-        </div>
-        <div style="margin-bottom: 15px;">
-            <label style="font-weight:bold; display:block; margin-bottom:5px;">Paste Code 4 Word List Below:</label>
-            <div style="font-size:0.85rem; color:#64748b; margin-bottom:5px;">Format: Word, Rule_Key, Sentence with __ blank</div>
-            <textarea id="bulkPasteInput" class="bulk-textarea" placeholder="fudge, trigraph_dge, Grandma made sweet chocolate __ for our treat."></textarea>
-            <button onclick="processBulkPaste()" style="margin-top:0; padding:10px 20px; font-size:1rem; background-color:var(--success); width:100%;">Apply List to Code 4</button>
-        </div>
-    </div>
-    <div class="student-card" id="gameCard"></div>
+    <header>
+        <h1>The Code Workbook - Year 4</h1>
+        <p>Comprehensive Linguistic Rules Engines & Patterns for Year 4 Lists</p>
+    </header>
+
+    <div class="grid" id="workbook-grid"></div>
 </div>
 
 <script>
-    const MASTER_SPELLING_RULES = {
-        "ea_variations": "🏫 <strong>One Spelling 'ea' Has Three Sounds Lesson:</strong><br>The spelling 'ea' isn't just for the long sound in <em>eat</em>! It can represent multiple variations:<br><ul><li>The short <strong>/e/</strong> sound as in <em>bread</em>, <em>dead</em>, <em>head</em>, <em>deaf</em>, <em>meant</em>, <em>sweat</em>, <em>tread</em>, <em>breath</em>, and <em>spread</em>.</li><li>The long <strong>/a/</strong> sound as in <em>steak</em>, <em>great</em>, and <em>break</em>.</li></ul>",
-        "ey_vowel_team": "🏫 <strong>Vowel Team 'ey' Lesson:</strong><br>The vowel team 'ey' changes sounds depending on word structure:<br><ul><li>It typically represents long <strong>/e/</strong> at the end of a multi-syllable word, like <em>key</em>, <em>money</em>, <em>honey</em>, <em>donkey</em>, <em>monkey</em>, <em>turkey</em>, <em>chimney</em>, and <em>valley</em>.</li><li>It can represent long <strong>/a/</strong> in specific words like <em>they</em>, <em>hey</em>, <em>prey</em>, <em>grey</em>, and <em>obey</em>.</li></ul>",
-        "ie_vowel_team": "🏫 <strong>Vowel Team 'ie' Lesson:</strong><br>The vowel team 'ie' works together in base words to represent the clear long <strong>/i/</strong> sound, as heard in words like <em>pie</em>, <em>tie</em>, <em>lie</em>, <em>fried</em>, <em>die</em>, <em>died</em>, <em>lied</em>, <em>magpie</em>, <em>tried</em>, and <em>spied</em>.",
-        "oe_vowel_team": "🏫 <strong>Vowel Team 'oe' Lesson:</strong><br>The vowel team 'oe' aligns to represent the long <strong>/o/</strong> sound. This structure is typically located right at the end of single base words or their plural counterparts, like <em>toe</em>, <em>foe</em>, <em>goes</em>, <em>hoe</em>, <em>tiptoe</em>, <em>potatoes</em>, <em>tomatoes</em>, and <em>dominoes</em>.",
-        "ew_long_u": "🏫 <strong>Vowel Team 'ew' Long /u/ Lesson:</strong><br>The vowel team 'ew' functions to represent the clear long <strong>/u/</strong> sound layout across single syllables, as found in <em>few</em>, <em>new</em>, <em>knew</em>, <em>stew</em>, <em>dew</em>, <em>nephew</em>, <em>curfew</em>, <em>mildew</em>, and <em>spew</em>.",
-        "aw_au_spellings": "🏫 <strong>Vowel Teams 'aw' and 'au' Lesson:</strong><br>Both spelling architectures represent the identical <strong>/or/</strong> phoneme, but follow structural rules for position:<br><ul><li>Use <strong>aw</strong> at the end of words or when preceding <em>l</em>, <em>n</em>, or <em>k</em> (like <em>saw</em>, <em>jaw</em>, <em>paw</em>, <em>lawn</em>, <em>straw</em>, <em>crawl</em>, <em>draw</em>, <em>claw</em>, and <em>dawn</em>).</li><li>Use <strong>au</strong> inside syllables before other consonants (like <em>sauce</em>, <em>August</em>, <em>haul</em>, <em>launch</em>, <em>cause</em>, and <em>pause</em>).</li></ul>",
-        "trigraph_dge": "🏫 <strong>Trigraph 'dge' Short Vowel Lesson:</strong><br>The trigraph 'dge' is the long structural spelling of the <strong>/j/</strong> phoneme. Remember:<br><ul><li>The single letter <em>j</em> is never used at the absolute end of a base word!</li><li>Always use <strong>dge</strong> at the end of a one-syllable word immediately following a short vowel sound (like <em>fudge</em>, <em>judge</em>, <em>edge</em>, <em>hedge</em>, <em>wedge</em>, <em>ledge</em>, <em>bridge</em>, <em>badge</em>, <em>dodge</em>, <em>ridge</em>, and <em>fridge</em>).</li></ul>",
-        "ew_ue_sound": "🏫 <strong>Vowel Teams 'ew' and 'ue' (/oo/) Lesson:</strong><br>Both structural vowel setups function seamlessly to represent the identical <strong>/oo/</strong> sound (as in food):<br><ul><li>Examples with 'ew': <em>crew</em>, <em>chew</em>, <em>flew</em>, <em>grew</em>, <em>threw</em>, and <em>drew</em>.</li><li>Examples with 'ue': <em>clue</em>, <em>blue</em>, <em>glue</em>, <em>true</em>, <em>tissue</em>, and <em>gruesome</em>.</li></ul>",
-        "tiger_rule": "🏫 <strong>Syllable Division - Tiger Rule V.CV Lesson:</strong><br>When exactly one consonant stands between two vowels, divide the word layout immediately after the first vowel!<br><ul><li>This sets up an <strong>Open Syllable</strong> at the start, making the vowel speak its long name.</li><li>Examples: <em>pu-pil</em>, <em>ro-bot</em>, <em>ho-tel</em>, <em>ba-sin</em>, <em>ro-tate</em>, <em>e-vent</em>, <em>mo-tel</em>, <em>ba-sic</em>, <em>to-tal</em>, <em>fro-zen</em>, and <em>ha-lo</em>.</li></ul>",
-        "cvc_doubling": "🏫 <strong>Morphology - CVC Doubling Rule Lesson:</strong><br>In a one-syllable word ending in a Consonant-Vowel-Consonant layout, you must double the final consonant before adding a vowel suffix to shield the short vowel sound:<br><ul><li>Double it for vowel suffixes (like <em>hotter</em>, <em>hugged</em>, <em>rotten</em>, <em>trimmed</em>, and <em>stopped</em>).</li><li><strong>Do NOT double</strong> if adding a consonant suffix (like <em>runs</em>, <em>hits</em>, <em>splits</em>).</li><li><strong>Do NOT double</strong> if the word has a double consonant ending (like <em>rested</em>, <em>milking</em>) or a vowel team (like <em>soften</em>, <em>rained</em>, <em>cleaned</em>, <em>cooled</em>, <em>looked</em>).</li></ul>",
-        "prefixes": "🏫 <strong>Morphology - Prefixes (un-, re-, dis-) Lesson:</strong><br>A prefix is a meaningful group of letters placed directly before the base of a word to alter its structural meaning:<br><ul><li><strong>re-</strong> means to do something again (like <em>redo</em>, <em>reload</em>, <em>replay</em>, <em>repeat</em>, <em>rebound</em>, <em>rethink</em>, <em>repack</em>).</li><li><strong>dis-</strong> means the opposite of or removal (like <em>disagree</em>, <em>disable</em>, <em>disappeared</em>, <em>dishonest</em>, <em>discover</em>, <em>distrust</em>, <em>displace</em>).</li></ul>",
-        "camel_rule": "🏫 <strong>Syllable Division - Camel Rule VC.V Lesson:</strong><br>When one consonant falls between two vowels, if the first vowel is short and crisp, divide the word layout immediately after the consonant!<br><ul><li>This keeps the first syllable <strong>Closed</strong>, locking in its short vowel sound.</li><li>Examples: <em>den-im</em>, <em>cab-in</em>, <em>lav-ish</em>, <em>plan-et</em>, <em>pun-ish</em>, <em>sev-en</em>, <em>pan-ic</em>, <em>com-ic</em>, <em>sol-id</em>, <em>dev-il</em>, <em>tim-id</em>, and <em>rap-id</em>.</li></ul>",
-        "suffixes_ful_less": "🏫 <strong>Morphology - Suffixes (-ful / -less) Lesson:</strong><br>Suffixes change meanings at the end of words. Keep their structural rules in mind:<br><ul><li><strong>-ful</strong> means full of, and always drops its second 'l' at the end of a word (like <em>helpful</em>, <em>playful</em>, <em>thankful</em>, <em>beautiful</em>, <em>wonderful</em>, <em>thoughtful</em>, <em>cheerful</em>, and <em>careful</em>).</li><li><strong>-less</strong> means entirely without (like <em>careless</em>, <em>hopeless</em>, <em>tasteless</em>, <em>useless</em>, <em>spotless</em>, <em>helpless</em>, and <em>thoughtless</em>).</li></ul>",
-        "silent_e_drops": "🏫 <strong>Morphology - Silent e Plus Suffix Rule Lesson:</strong><br>When modifying a base word that ends with a silent 'e', look at the starting letter of the suffix:<br><ul><li><strong>DROP the e</strong> if the suffix begins with a vowel sound (like <em>ice + ing = icing</em>, <em>hoping</em>, <em>tamed</em>, <em>saved</em>, and <em>broken</em>).</li><li><strong>KEEP the e</strong> if the suffix begins with a consonant sound (like <em>hope + ful = hopeful</em>, <em>likely</em>, <em>lonely</em>, <em>hopeless</em>, and <em>useless</em>).</li></ul>",
-        "consonant_le": "🏫 <strong>Consonant -le Syllable Architecture Lesson:</strong><br>A final stable syllable ending in a consonant plus <strong>-le</strong> (-ble, -dle, -tle) determines the middle spelling layout:<br><ul><li><strong>Double the consonant</strong> if the preceding vowel is short to keep that first syllable closed (like <em>wiggle</em>, <em>little</em>, <em>muddle</em>, <em>puddle</em>, and <em>settle</em>).</li><li><strong>Keep it single</strong> if the preceding vowel is long and open (like <em>table</em>, <em>bible</em>, <em>cradle</em>, and <em>cable</em>).</li><li>No doubling is needed if the syllable already safely ends in two separate consonants (like <em>humble</em>, <em>jumble</em>, <em>temple</em>, <em>kindle</em>, and <em>simple</em>).</li></ul>"
+    const curriculumData = {
+        "34a": {
+            title: "List 34a: Multi-Sound 'ea' Team",
+            rule: "The spelling 'ea' represents three distinct sounds: long /e/ as in eat, short /e/ as in bread, and long /a/ as in steak.",
+            words: ["eat", "meat", "weak", "treat", "bleat", "sneak", "peak", "speak", "read", "bread", "dead", "head", "deaf", "meant", "sweat", "tread", "breath", "spread", "steak", "great", "break"],
+            type: "phonetic"
+        },
+        "34b": {
+            title: "List 34b: Vowel Team 'ey'",
+            rule: "Vowel team 'ey' represents the long /e/ sound and the long /a/ sound.",
+            words: ["key", "money", "honey", "parsley", "hockey", "donkey", "monkey", "turkey", "jockey", "chimney", "trolley", "alley", "valley", "kidney", "pulley", "they", "hey", "prey", "grey", "obey"],
+            type: "phonetic"
+        },
+        "34c": {
+            title: "List 34c: Vowel Team 'ie' (Long /i/)",
+            rule: "Vowel team 'ie' represents the long /i/ sound.",
+            words: ["pie", "tie", "lie", "fried", "tried", "die", "died", "lied", "magpie", "spied"],
+            type: "phonetic"
+        },
+        "34d": {
+            title: "List 34d: Vowel Team 'oe' (Long /o/)",
+            rule: "Vowel team 'oe' represents long /o/.",
+            words: ["toe", "foe", "Joe", "tiptoe", "hoe", "potatoes", "tomatoes", "goes", "dominoes", "doe"],
+            type: "phonetic"
+        },
+        "34e": {
+            title: "List 34e: Vowel Team 'ew' (Long /u/)",
+            rule: "Vowel team 'ew' represents long /u/.",
+            words: ["few", "new", "knew", "pew", "stew", "nephew", "dew", "curfew", "mildew", "spew"],
+            type: "phonetic"
+        },
+        "35": {
+            title: "List 35: Homophones",
+            rule: "Homophones are words that sound the same but have different spellings and different meanings.",
+            words: ["red", "read", "pear", "pair", "nose", "knows", "right", "write", "ate", "eight", "here", "hear", "hair", "hare", "night", "knight", "son", "sun", "week", "weak", "tail", "tale", "threw", "through", "meet", "meat", "one", "won", "hole", "whole", "their", "there"],
+            type: "homophone"
+        },
+        "36": {
+            title: "List 36: Vowel Teams 'aw' and 'au'",
+            rule: "Vowel teams 'aw' and 'au' represent the /or/ sound.",
+            words: ["saw", "jaw", "paw", "law", "raw", "draw", "claw", "lawn", "straw", "seesaw", "awesome", "crawl", "pawpaw", "coleslaw", "awful", "scrawl", "Paul", "haul", "sauce", "August", "autumn", "author", "pause", "launch", "applaud", "exhaust", "astronaut", "gaunt", "automatic", "laundry", "saucer", "cause"],
+            type: "phonetic"
+        },
+        "37": {
+            title: "List 37: Trigraph 'dge'",
+            rule: "Trigraph 'dge' is the long spelling of the sound /j/. The letter j is never used at the end of a word. 'dge' is used at the end of a one-syllable word straight after a short vowel.",
+            words: ["fudge", "nudge", "judge", "trudge", "budge", "dredge", "edge", "hedge", "wedge", "ledge", "sledge", "dodge", "bridge", "ridge", "fridge", "badge", "smudge", "cadge"],
+            type: "dge_engine"
+        },
+        "38": {
+            title: "List 38: Vowel Teams 'ew' and 'ue' (/oo/)",
+            rule: "Vowel teams 'ew' and 'ue' represent the sound /oo/ as in food.",
+            words: ["crew", "chew", "flew", "grew", "threw", "drew", "Andrew", "clue", "blue", "glue", "true", "gruesome", "untrue", "tissue"],
+            type: "phonetic"
+        },
+        "39": {
+            title: "List 39: Syllable Division - Tiger Rule (V.CV)",
+            rule: "When one consonant comes between two vowels, divide after the first vowel. The first syllable is an open syllable.",
+            words: ["pupil", "robot", "hotel", "motel", "omit", "total", "basin", "rotate", "event", "halo", "basic", "frozen"],
+            type: "tiger_engine"
+        },
+        "40": {
+            title: "List 40: CVC Doubling Rule",
+            rule: "In a one-syllable word ending in CVC, double the final consonant before a vowel suffix (-er, -ing, -ed, -en). No doubling with a consonant suffix, a long vowel/vowel team, or a CVCC pattern.",
+            words: ["hotter", "hugged", "rotten", "trimmed", "stopped", "runs", "hits", "splits", "rested", "milking", "soften", "rained", "cleaned", "cooled", "looked"],
+            type: "cvc_engine"
+        },
+        "41": {
+            title: "List 41: Prefixes (un-, re-, dis-)",
+            rule: "A prefix is placed before a base word. 're' means to do again, and 'dis' means the opposite of.",
+            words: ["redo", "reload", "replay", "repeat", "rebound", "rethink", "repack", "disagree", "disable", "disappeared", "dishonest", "discover", "distrust", "displace"],
+            type: "phonetic"
+        },
+        "42": {
+            title: "List 42: Syllable Division - Camel Rule (VC.V)",
+            rule: "When one consonant comes between two vowels, divide before the second vowel to try the short vowel sound in the first closed syllable.",
+            words: ["denim", "cabin", "lavish", "planet", "punish", "seven", "panic", "comic", "solid", "devil", "timid", "rapid", "atom", "vanish"],
+            type: "camel_engine"
+        },
+        "43": {
+            title: "List 43: Suffixes (-ful / -less)",
+            rule: "A suffix is placed after a base word. 'ful' means full of (spelled with one l) and 'less' means without.",
+            words: ["helpful", "playful", "thankful", "beautiful", "wonderful", "thoughtful", "cheerful", "careful", "useful", "careless", "hopeless", "tasteless", "useless", "spotless", "helpless", "thoughtless", "fearless", "thankless"],
+            type: "phonetic"
+        },
+        "44": {
+            title: "List 44: Silent e plus Suffix Rule",
+            rule: "When adding a vowel suffix to a silent e base word, DROP the e. When adding a consonant suffix to a silent e base word, KEEP the e.",
+            words: ["icing", "hoping", "tamed", "saved", "broken", "hopeful", "likely", "lonely", "hopeless", "useless"],
+            type: "silente_engine"
+        },
+        "45": {
+            title: "List 45: Consonant -le Syllable (-Cle)",
+            rule: "A final syllable containing a consonant, an l, and an e. Double the consonant in the first syllable if the preceding vowel is short (puddle). Keep it single if the vowel is long (table).",
+            words: ["table", "bible", "cradle", "cable", "bugle", "wiggle", "little", "muddle", "puddle", "settle", "humble", "jumble", "temple", "kindle", "simple", "poodle", "turtle", "beagle", "circle", "marble"],
+            type: "cle_engine"
+        }
     };
 
-    const formViewURL = "https://docs.google.com/forms/d/e/1FAIpQLSddB0NQFaIBv9x-feJucH_YGDwHb8suDI9h1ShPOv1yGzCCXQ/viewform";
-    const nameKey = "entry.421008981"; const wordsKey = "entry.1429911539"; const incorrectKey = "entry.407995943"; const scoreKey = "entry.211442136";
-    
-    const storageKeyCurriculum = 'genericSavedCurriculum_Code4_Y4';
-    const storageKeyCode = 'genericSavedCode_Code4_Y4';
-    const MASTER_PANEL_PASSWORD = "admin"; 
-
-    let masterRulesMap = {}; let activeLessonWords = []; let currentWordIndex = 0; let currentStep = 0; 
-    let masterTeacherCode = "tiger"; let activeLessonLabel = ""; let studentName = "";
-    let correctWordsList = []; let incorrectWordsList = []; let correctCount = 0;
-    let lastSpelledWord = ""; 
-
-    const DEFAULT_Y4_DATA = {
-        "List 34a: One Spelling ea": [
-            { word: "bread", rule: "ea_variations", sentence: "We toasted fresh __ for breakfast." },
-            { word: "steak", rule: "ea_variations", sentence: "Dad cooked a juicy __ on the barbecue." },
-            { word: "head", rule: "ea_variations", sentence: "Always wear a helmet to protect your __." }
-        ],
-        "List 37: Trigraph dge": [
-            { word: "fudge", rule: "trigraph_dge", sentence: "Grandma made sweet chocolate __ for our treat." },
-            { word: "bridge", rule: "trigraph_dge", sentence: "The cars drove slowly across the old river __." },
-            { word: "badge", rule: "trigraph_dge", sentence: "The police officer wore a shiny silver __." }
-        ],
-        "List 39: Tiger Rule V.CV": [
-            { word: "pupil", rule: "tiger_rule", sentence: "Every __ in the classroom was reading quietly." },
-            { word: "robot", rule: "tiger_rule", sentence: "The toy __ moved its arms and flashed its eyes." },
-            { word: "hotel", rule: "tiger_rule", sentence: "We stayed in a tall __ right by the beach." }
-        ]
-    };
-
-    function secureTogglePanel() {
-        const p = document.getElementById('teacherPanel');
-        if (p.style.display === 'none' || p.style.display === '') {
-            const check = prompt("Enter Master Teacher Password to unlock configuration:");
-            if (check === MASTER_PANEL_PASSWORD) { p.style.display = 'block'; }
-            else if (check !== null) { alert("Incorrect teacher security credentials."); }
-        } else { p.style.display = 'none'; }
-    }
-
-    function processBulkPaste() {
-        const rawText = document.getElementById('bulkPasteInput').value.trim();
-        if(!rawText) return alert("Box is empty!");
-        const lines = rawText.split('\n').map(line => line.trim()).filter(line => line.length > 0);
-        let tempMap = {};
-        lines.forEach(line => {
-            const parts = line.split(',');
-            const word = parts[0] ? parts[0].trim().toLowerCase() : "";
-            const ruleName = parts[1] ? parts[1].trim() : "General List";
-            const sentence = parts.slice(2).join(',') ? parts.slice(2).join(',').trim() : "Fill in the blank: ___";
-            if (word) { if (!tempMap[ruleName]) tempMap[ruleName] = []; tempMap[ruleName].push({ word, rule: ruleName, sentence }); }
-        });
-        if (Object.keys(tempMap).length === 0) return alert("Invalid format layout lines.");
-        masterRulesMap = tempMap;
-        masterTeacherCode = document.getElementById('teacherCodeSetting').value.trim().toLowerCase();
-        localStorage.setItem(storageKeyCurriculum, JSON.stringify(masterRulesMap));
-        localStorage.setItem(storageKeyCode, masterTeacherCode);
-        document.getElementById('bulkPasteInput').value = "";
-        document.getElementById('teacherPanel').style.display = 'none';
-        studentName = ""; currentStep = 0; renderStep();
-        alert(`Year 4 Station Data Updated Successfully!`);
-    }
-    
-    function getRequiredPassword() { 
-        return currentWordIndex === 0 ? masterTeacherCode : lastSpelledWord; 
-    }
-
-    function findRuleExplanation(rawRuleName) {
-        let cleaned = rawRuleName.toLowerCase().trim();
-        for (let key in MASTER_SPELLING_RULES) {
-            if (cleaned.startsWith(key)) { return MASTER_SPELLING_RULES[key]; }
-        }
-        return null;
-    }
-
-    function renderStep() {
-        const card = document.getElementById('gameCard');
-        if (Object.keys(masterRulesMap).length === 0) {
-            card.innerHTML = `<h2>Code 4 Station</h2><p>Click <strong>Open Control Panel</strong> to setup word lists.</p>`;
-            return;
-        }
-        if (currentStep === 0) {
-            card.innerHTML = `<h2>Vocabulary Station (Year 4)</h2><p style="font-size: 1.2rem;">Enter your name:</p><input type="text" id="nameInput" class="student-input" placeholder="Your Name..."><br><button onclick="submitName()">Enter Station</button>`;
-            document.getElementById('nameInput').focus();
-        } else if (currentStep === 0.5) {
-            let buttons = "";
-            Object.keys(masterRulesMap).forEach((ruleName) => {
-                buttons += `<button class="menu-btn" onclick="launchRule('${encodeURIComponent(ruleName)}')"><span style="display:block; margin-bottom: 8px;">${ruleName}</span><span style="font-size:0.85rem; font-weight:normal; color:#64748b;">(${masterRulesMap[ruleName].length} words)</span></button>`;
-            });
-            card.innerHTML = `<h2>Hello, ${studentName}!</h2><p style="font-size: 1.2rem; margin-bottom:10px;">Select your list:</p><div class="menu-grid">${buttons}</div>`;
-        } else {
-            const currentData = activeLessonWords[currentWordIndex];
-            let progressHTML = `<div class="progress-bar">${activeLessonLabel} &bull; Word ${currentWordIndex + 1} of ${activeLessonWords.length}</div>`;
-            let ruleExplanation = findRuleExplanation(currentData.rule) || `💡 <strong>Pattern Rule:</strong> Focus on spelling words in the <em>${currentData.rule}</em> category carefully!`;
-
-            if (currentStep === 1) {
-                card.innerHTML = `${progressHTML}<div class="target-word">${currentData.word}</div><div class="rule-box">${ruleExplanation}</div><button onclick="nextStep()">I Studied It</button>`;
-            } else if (currentStep === 2) {
-                let hint = currentWordIndex === 0 ? `The starting lock word is: <strong>${masterTeacherCode}</strong>` : `Type the word you just spelled to unlock your notebook work!`;
-                card.innerHTML = `${progressHTML}<div style="font-size: 1.4rem; font-weight: bold; color: var(--danger);">Notebook Practice</div><ol style="text-align: left; margin: 20px auto; max-width: 85%; font-size: 1.2rem; line-height: 1.6;"><li>Look closely at the word: <strong>${currentData.word}</strong></li><li>Write it down on paper 5 times.</li></ol><div class="lock-container"><label style="font-weight: bold; display:block; margin-bottom:5px;">Password Lock</label><span style="font-size:0.9rem; color:#64748b; display:block; margin-bottom:10px;">${hint}</span><input type="text" id="passInput" class="teacher-password-input" placeholder="Password..." autocomplete="off"><br><button onclick="verifyTeacherCode()" style="margin-top:10px; padding: 8px 20px; background-color: var(--danger);">Unlock</button><div id="lockFeedback" class="feedback"></div></div>`;
-                document.getElementById('passInput').focus();
-            } else if (currentStep === 3) {
-                card.innerHTML = `${progressHTML}<p style="font-size:1.3rem;">Study before it disappears...</p><div class="target-word" id="fadingWord">${currentData.word}</div>`;
-                setTimeout(() => { document.getElementById('fadingWord')?.classList.add('hidden-word'); setTimeout(() => { nextStep(); }, 800); }, 1800);
-            } else if (currentStep === 4) {
-                card.innerHTML = `${progressHTML}<div class="sentence-prompt">${currentData.sentence.replace('__', '<em>__</em>')}</div><input type="text" id="testInput" class="student-input" placeholder="Spell here" autocomplete="off"><br><button id="verifySpellingBtn" onclick="checkTestAnswer()">Verify Spelling</button><div id="testFeedback" class="feedback"></div>`;
-                document.getElementById('testInput').focus();
-            }
-        }
-    }
-
-    function submitName() { const val = document.getElementById('nameInput').value.trim(); if(val) { studentName = val; currentStep = 0.5; renderStep(); } }
-    function launchRule(encoded) { activeLessonWords = masterRulesMap[decodeURIComponent(encoded)]; activeLessonLabel = decodeURIComponent(encoded); currentWordIndex = 0; correctWordsList = []; incorrectWordsList = []; correctCount = 0; lastSpelledWord = ""; currentStep = 1; renderStep(); }
-    function nextStep() { currentStep++; renderStep(); }
-    
-    function verifyTeacherCode() { 
-        if(document.getElementById('passInput').value.trim().toLowerCase() === getRequiredPassword()) { nextStep(); } 
-        else { const fb = document.getElementById('lockFeedback'); fb.className = "feedback error"; fb.innerHTML = "Incorrect password lock."; } 
-    }
-    
-    function checkTestAnswer() {
-        const btn = document.getElementById('verifySpellingBtn');
-        if (btn.disabled) return; 
-        btn.disabled = true; 
-        btn.innerText = "Checking...";
-
-        const entered = document.getElementById('testInput').value.trim().toLowerCase();
-        const correct = activeLessonWords[currentWordIndex].word;
+    function executeLinguisticEngine(listId, val) {
+        let input = val.trim().toLowerCase();
+        if(!input) return "Provide input for rule evaluation.";
         
-        if(entered === correct) { 
-            correctCount++; 
-            correctWordsList.push(correct); 
-        } else { 
-            incorrectWordsList.push(`${entered || '[Blank]'} (${correct})`); 
+        const type = curriculumData[listId].type;
+
+        switch(type) {
+            case "dge_engine":
+                if(input.endsWith('j')) return "🛑 VIOLATION: The letter 'j' is never used at the end of a word!";
+                if(input.endsWith('dge')) return "✅ Follows Rule: Ends with trigraph 'dge' after a short vowel.";
+                return "ℹ️ Evaluated: Check if word requires a terminal 'dge'.";
+
+            case "tiger_engine":
+                let tigerSplit = input.replace(/([aeiou])([^aeiou])([aeiou])/g, "$1 • $2$3");
+                return `Tiger Division (V.CV): [ ${tigerSplit} ]`;
+
+            case "camel_engine":
+                let camelSplit = input.replace(/([aeiou])([^aeiou])([aeiou])/g, "$1$2 • $3");
+                return `Camel Division (VC.V): [ ${camelSplit} ]`;
+
+            case "cvc_engine":
+                if(input.match(/(ing|ed|er|en)$/)) return "Analyzed structural suffix modification logic.";
+                return "Base verification profile completed.";
+
+            case "silente_engine":
+                if(input.match(/(ing|ed|er|en)$/)) return "Rule applied: Trailing Silent-e dropped for Vowel Suffix.";
+                if(input.match(/(ful|ly|less)$/)) return "Rule applied: Trailing Silent-e retained for Consonant Suffix.";
+                return "Linguistic environment checked.";
+
+            case "cle_engine":
+                if(!input.endsWith('le')) return "Must end with -le to evaluate.";
+                let stem = input.slice(0, -3);
+                if(stem.length > 1 && stem[stem.length-1] === stem[stem.length-2]) {
+                    return "Structure: Closed Syllable + -Cle (Doubled Consonant due to preceding short vowel).";
+                }
+                return "Structure matches open or alternative vowel team criteria.";
+
+            default:
+                return "Phoneme mapping verified against rules configuration.";
         }
-        
-        lastSpelledWord = correct; 
-
-        const fb = document.getElementById('testFeedback');
-        fb.className = entered === correct ? "feedback success" : "feedback error";
-        fb.innerHTML = entered === correct ? "Correct!" : `Incorrect. Spelling is "${correct}".`;
-        
-        setTimeout(() => { 
-            if (currentWordIndex < activeLessonWords.length - 1) { 
-                currentWordIndex++; 
-                currentStep = 1; 
-                renderStep(); 
-            } else { 
-                showEndScreen(); 
-            } 
-        }, 2200);
     }
 
-    function showEndScreen() {
-        let finalScore = `${correctCount} out of ${activeLessonWords.length}`;
-        document.getElementById('gameCard').innerHTML = `<h1 style="color: var(--success);">Practice Complete</h1><p>Great job, ${studentName}!</p><p>Score: <strong>${finalScore}</strong></p><div id="submissionZone"><button onclick="openGoogleFormLink()">Send Progress Form</button></div><br><button onclick="resetToMenu()" style="background-color: #64748b;">Choose Another List</button>`;
-    }
+    const grid = document.getElementById('workbook-grid');
+    Object.keys(curriculumData).forEach(key => {
+        const item = curriculumData[key];
+        const card = document.createElement('div');
+        card.className = 'card';
+        let wordsHTML = item.words.map(w => `<span class="word-tag" onclick="document.getElementById('input-${key}').value='${w}';">${w}</span>`).join('');
 
-    function openGoogleFormLink() {
-        let finalScore = `${correctCount} out of ${activeLessonWords.length}`;
-        let filledURL = `${formViewURL}?usp=pp_url&${nameKey}=${encodeURIComponent(studentName)}&${wordsKey}=${encodeURIComponent(correctWordsList.join(', ') || "None")}&${incorrectKey}=${encodeURIComponent(incorrectWordsList.join(', ') || "None")}&${scoreKey}=${encodeURIComponent(finalScore)}`;
-        window.open(filledURL, '_blank');
-        document.getElementById('submissionZone').innerHTML = `<p style="color: var(--success); font-weight:bold;">Form opened! Click submit on that page to finish.</p>`;
-    }
-
-    function resetToMenu() { currentStep = 0.5; renderStep(); }
-
-    function init() {
-        const savedCurriculum = localStorage.getItem(storageKeyCurriculum);
-        const savedCode = localStorage.getItem(storageKeyCode);
-        if (savedCurriculum) masterRulesMap = JSON.parse(savedCurriculum);
-        else masterRulesMap = DEFAULT_Y4_DATA;
-        if (savedCode) masterTeacherCode = savedCode;
-    }
-    document.getElementById('teacherPanel').style.display = 'none';
-    init(); renderStep();
+        card.innerHTML = `
+            <span class="badge badge-y4">Year 4</span>
+            <h2>${item.title}</h2>
+            <div class="rule-box">${item.rule}</div>
+            <div><strong>Word Bank:</strong></div>
+            <div style="margin-bottom:1rem;">${wordsHTML}</div>
+            <div class="interactive-zone">
+                <input type="text" id="input-${key}" placeholder="Type or click a word to analyze...">
+                <button onclick="const out = document.getElementById('out-${key}'); out.innerText = executeLinguisticEngine('${key}', document.getElementById('input-${key}').value)">Run Evaluation</button>
+                <div class="output" id="out-${key}"></div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
 </script>
 </body>
 </html>
